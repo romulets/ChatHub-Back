@@ -1,13 +1,13 @@
 import { Router } from 'express'
 import errorHandler from '../error-handler';
-import { getRepositories, saveRepository } from '../../domain/repositories';
+import { getThreads, saveThread } from '../../domain/threads';
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/:projectId', async (req, res) => {
   try {
-    const resp = await getRepositories(req.query.token)
-    console.log("Recebi")
+    console.log(req.params.projectId)
+    const resp = await getThreads(req.params.projectId)
     res.status(200).send(resp)
   } catch (err) {
     errorHandler(err, res, 500)
@@ -16,12 +16,11 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const resp = await saveRepository(req.body)
+    const resp = await saveThread(req.body)
     res.status(200).send(resp)
   } catch (err) {
     errorHandler(err, res, 500)
   }
 })
-
 
 export default router
