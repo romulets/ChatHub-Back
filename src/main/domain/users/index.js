@@ -19,6 +19,7 @@ export async function loginAndSync(code) {
   user.save()
 
   user.token = token
+
   return user
 }
 

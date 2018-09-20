@@ -6,8 +6,8 @@ const router = Router()
 
 router.post('/', async (req, res) => {
   try {
-    const resp = await loginAndSync(req.body.code)
-    res.status(200).send(resp)
+    const user = await loginAndSync(req.body.code)
+    res.status(200).send(user)
   } catch (err) {
     errorHandler(err, res, 500)
   }
