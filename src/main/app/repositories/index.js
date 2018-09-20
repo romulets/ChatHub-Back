@@ -7,7 +7,6 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const resp = await getRepositories(req.query.token)
-    console.log("Recebi")
     res.status(200).send(resp)
   } catch (err) {
     errorHandler(err, res, 500)
