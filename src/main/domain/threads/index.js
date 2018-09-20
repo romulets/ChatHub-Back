@@ -7,6 +7,7 @@ export async function getThreads(projectId){
 
 export async function saveThread(threadData){
     const thread = new Thread(threadData)
+    thread.createdAt = new Date()
     return await thread.save()
 }
 
