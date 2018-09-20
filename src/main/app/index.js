@@ -14,6 +14,6 @@ router.use((req, _, next) => {
 
 router.use('/login', login)
 router.use('/repositories', repositories)
-router.use('/threads', threads)
+router.use('/projects/:projectId/threads', threads)
 
 export default router
