@@ -5,7 +5,8 @@ const userSchema = new Schema({
     githubId: Number,
     name: String,
     url: String,
-    avatarUrl: String
+    avatarUrl: String,
+    repositories: Array,
 })
 
 export default Mongoose.model('User', userSchema)

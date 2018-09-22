@@ -6,7 +6,7 @@ import Mongoose from 'mongoose';
 
 envConfig()
 
-Mongoose.connect('mongodb://localhost:27017/test')
+Mongoose.connect('mongodb://localhost:27017/chathub')
 
 const expressApp = express()
 expressApp.use(cors())

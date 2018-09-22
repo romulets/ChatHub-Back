@@ -1,8 +1,8 @@
 import * as github from '../../infra/github'
 import Thread from './model'
 
-export async function getThreadsFromRepository(projectId){
-    return await Thread.find({ projectId: projectId}).exec()
+export async function getThreadsFromRepository(repositoryId){
+    return await Thread.find({ repositoryId: repositoryId}).exec()
 }
 
 export async function getThreads(threadId){

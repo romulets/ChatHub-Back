@@ -6,9 +6,9 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const projectId = req.baseUrl.split('/')[2]
-    console.log(projectId)
-    const resp = await getThreadsFromRepository(projectId)
+    const repositoryId = req.baseUrl.split('/')[2]
+    console.log(repositoryId)
+    const resp = await getThreadsFromRepository(repositoryId)
     res.status(200).send(resp)
   } catch (err) {
     errorHandler(err, res, 500)
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:threadId', async (req, res) => {
   try {
-    console.log(req.params.projectId)
+    console.log(req.params.repositoryId)
     const resp = await getThreads(req.params.threadId)
     res.status(200).send(resp)
   } catch (err) {

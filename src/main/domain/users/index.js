@@ -47,3 +47,7 @@ function createUserFromGithubUser({ id: githubId, login: username, name, html_ur
 async function findUserByUsername(username) {
   return await User.findOne({ username })
 }
+
+export async function findUserById(id) {
+  return await User.findById(id)
+}
