@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import errorHandler from '../error-handler';
-import { getThreads, saveThread, getThreadsFromRepository } from '../../domain/threads';
+import { getThread, saveThread, getThreadsFromRepository } from '../../domain/threads';
 
 const router = Router()
 
@@ -17,8 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:threadId', async (req, res) => {
   try {
-    console.log(req.params.repositoryId)
-    const resp = await getThreads(req.params.threadId)
+    const resp = await getThread(req.params.threadId)
     res.status(200).send(resp)
   } catch (err) {
     errorHandler(err, res, 500)
