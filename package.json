@@ -4,13 +4,31 @@
   "description": "back for chathub",
   "main": "./src/main/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/main/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/main/app.js",
+    "development": "nodemon --exec babel-node ./src/main/app.js",
+    "build": "babel . -d dist --source-maps --copy-files --ignore 'node_modules,dist'",
+    "deploy": "npm run-script build && gcloud app deploy ./dist --quiet"
+  },
+  "cloud-repo-tools": {
+    "requiresKeyFile": true,
+    "requiresProjectId": true,
+    "test": {
+      "app": {
+        "args": [
+          "./main/app.js"
+        ],
+        "msg": "Hello, world!"
+      }
+    }
+  },
+  "engines": {
+    "node": "8.x.x"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
@@ -22,6 +40,7 @@
     "validate-fields": "^5.1.1"
   },
   "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "2.2.1",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "nodemon": "^1.18.3"

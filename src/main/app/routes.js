@@ -12,6 +12,8 @@ router.use((req, _, next) => {
     next()
 })
 
+router.get('/', (_, res) => res.status(200).send({itWorks: 'It works!'}))
+
 router.use('/login', loginRoutes)
 router.use('/users/:userId/repositories', repositoriesRoutes)
 router.use('/projects/:repositoryId/threads', threadsRoutes)
