@@ -8,6 +8,7 @@ const github = Axios.create({
 export async function login(code) {
   console.info(`Sending login with access_code ${code}`)
   const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = process.env
+  console.info(GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET)
   const resp = await Axios.post('https://github.com/login/oauth/access_token', {
     code,
     client_id: GITHUB_CLIENT_ID,

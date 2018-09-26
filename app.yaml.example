@@ -1,0 +1,4 @@
+runtime: nodejs8
+env_variables:
+  GITHUB_CLIENT_ID: "KKK"
+  GITHUB_CLIENT_SECRET: "KKKK"

@@ -2,19 +2,25 @@ import { getThread } from "../threads";
 import Message from './model'
 
 
-export async function createMessage(content, threadId, user) {
+export async function createMessage(content, threadId, user, sentAt) {
     const thread = await getThread(threadId)
     
     if (!thread) {
         throw new Error('Thread does not exists')
     }
 
-    message = {
+    const message = {
         content,
         threadId,
         user,
-        createdAt: new Date()
+        sentAt,
+        savedAt: new Date()
     }
 
     return await Message.create(message)
+}
+
+export async function loadMessagesByThread(threadId, limit, skip) {
+    const messages = await Message.find({ threadId }, {}, { limit, skip,  sort: { sentAt: -1 } })
+    return messages.sort((a, b) => new Date(a.sentAt) - new Date(b.sentAt))
 }

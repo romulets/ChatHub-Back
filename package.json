@@ -2,12 +2,12 @@
   "name": "chathub-back",
   "version": "1.0.0",
   "description": "back for chathub",
-  "main": "./src/main/index.js",
+  "main": "./src/main/app.js",
   "scripts": {
     "start": "node ./src/main/app.js",
     "development": "nodemon --exec babel-node ./src/main/app.js",
     "build": "babel . -d dist --source-maps --copy-files --ignore 'node_modules,dist'",
-    "deploy": "npm run-script build && gcloud app deploy ./dist --quiet"
+    "deploy": "npm run-script build && gcloud app deploy ./dist --quiet --version v0"
   },
   "cloud-repo-tools": {
     "requiresKeyFile": true,
@@ -29,6 +29,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
@@ -36,12 +37,17 @@
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.14",
     "query-string": "^6.1.0",
+    "regenerator-runtime": "^0.12.1",
     "socket.io": "^2.1.1",
     "validate-fields": "^5.1.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-regenerator": "^7.0.0",
     "@google-cloud/nodejs-repo-tools": "2.2.1",
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-generator-functions": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "nodemon": "^1.18.3"
   }

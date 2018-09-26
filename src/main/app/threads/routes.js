@@ -7,7 +7,7 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const repositoryId = req.baseUrl.split('/')[2]
-    console.log(repositoryId)
+    console.info(repositoryId)
     const resp = await getThreadsFromRepository(repositoryId)
     res.status(200).send(resp)
   } catch (err) {

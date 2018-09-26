@@ -13,7 +13,7 @@ async function createRepositoryIfNotExists(githubRepository) {
   var repository = await findByGithubId(githubRepository.id)
   
   if (!repository) {
-    repository = createFromGithubProject(githubRepository)
+    repository = createFromGithubRepository(githubRepository)
     repository.save()
 
     await saveThread({
@@ -27,7 +27,8 @@ async function createRepositoryIfNotExists(githubRepository) {
   return repository
 }
 
-function createFromGithubProject({ id: githubId, name, full_name: fullName, description, html_url: url }) {
+function createFromGithubRepository({ id: githubId, name, full_name: fullName, description, html_url: url }) {
+  console.info(`creating ${githubId}`)
   return new Repository({
     githubId,
     name,
