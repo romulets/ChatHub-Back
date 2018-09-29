@@ -7,7 +7,7 @@
     "start": "node ./src/main/app.js",
     "development": "nodemon --exec babel-node ./src/main/app.js",
     "build": "babel . -d dist --source-maps --copy-files --ignore 'node_modules,dist'",
-    "deploy": "npm run-script build && gcloud app deploy ./dist --quiet --version v1"
+    "deploy": "npm run-script build && gcloud app deploy ./dist --quiet --version v0"
   },
   "cloud-repo-tools": {
     "requiresKeyFile": true,
