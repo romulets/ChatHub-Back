@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
   try {
     const limit = parseInt(req.query.limit || 20)
     const skip = parseInt(req.query.skip || 0)
-    const resp = await loadMessagesByThread(req.params.threadId, limit, skip)
+    const { search } = req.query
+    const resp = await loadMessagesByThread(req.params.threadId, {limit, skip, search})
   
     res.status(200).send(resp)
   } catch (err) {
