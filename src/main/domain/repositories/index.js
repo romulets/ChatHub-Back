@@ -11,7 +11,7 @@ export async function syncRepositories(user, token) {
 
 async function createRepositoryIfNotExists(githubRepository) {
   var repository = await findByGithubId(githubRepository.id)
-  
+
   if (!repository) {
     repository = createFromGithubRepository(githubRepository)
     repository.save()
@@ -47,4 +47,13 @@ export async function getRepositories(userId) {
   return await Repository.find({
     '_id': { $in: user.repositories.map(Types.ObjectId) }
   })
+}
+
+export async function getRepository(userId, repositoryId) {
+  const user = await findUserById(userId)
+  if (user.repositories.filter(r => r == repositoryId).length === 0) {
+    throw new Error('Repository does not belongs to user')
+  }
+
+  return await Repository.findById(repositoryId)
 }
