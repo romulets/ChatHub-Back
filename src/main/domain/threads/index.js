@@ -15,3 +15,9 @@ export async function saveThread(threadData){
     return await thread.save()
 }
 
+export async function updateThread(threadData){
+    const thread = await getThread(threadData._id)
+    thread.name = threadData.name;
+    thread.createdAt = new Date()
+    return await thread.save()
+}
