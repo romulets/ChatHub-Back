@@ -24,3 +24,8 @@ export async function loadMessagesByThread(threadId, limit, skip) {
     const messages = await Message.find({ threadId }, {}, { limit, skip,  sort: { sentAt: -1 } })
     return messages.sort((a, b) => new Date(a.sentAt) - new Date(b.sentAt))
 }
+
+export async function loadNextMessagesByThread(threadId, datetime) {
+    const messages = await Message.find({ threadId, savedAt: { $gt: datetime }})
+    return messages.sort((a, b) => new Date(a.sentAt) - new Date(b.sentAt))
+}
