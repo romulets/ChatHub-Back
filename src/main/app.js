@@ -4,8 +4,6 @@ import cors from 'cors'
 import mainApp from './app/routes'
 import { config as envConfig } from 'dotenv'
 import Mongoose from 'mongoose';
-import http from 'http'
-import { attachSocketToApp } from './app/messages/socket';
 
 envConfig()
 
@@ -21,9 +19,3 @@ const expressApp = express()
 expressApp.use(cors())
 expressApp.use(mainApp)
 expressApp.listen(REST_PORT, () => console.info(`Listening rest :${REST_PORT}`))
-
-export default expressApp
-
-const socketApp = http.Server()
-attachSocketToApp(socketApp)
-socketApp.listen(3200, () => console.info('Listening socket :3200'))
