@@ -38,7 +38,7 @@ function createFromGithubRepository({ id: githubId, name, full_name: fullName, d
   })
 }
 
-async function findByGithubId(githubId) {
+export async function findByGithubId(githubId) {
   return await Repository.findOne({ githubId })
 }
 
