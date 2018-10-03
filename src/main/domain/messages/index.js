@@ -2,7 +2,7 @@ import { getThread } from "../threads";
 import Message from './model'
 
 
-export async function createMessage(content, threadId, user, sentAt) {
+export async function createMessage(content, threadId, user, sentAt, eventId) {
     const thread = await getThread(threadId)
 
     if (!thread) {
@@ -14,7 +14,8 @@ export async function createMessage(content, threadId, user, sentAt) {
         threadId,
         user,
         sentAt,
-        savedAt: new Date()
+        savedAt: new Date(),
+        eventId
     }
 
     return await Message.create(message)

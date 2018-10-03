@@ -19,6 +19,12 @@ export async function login(code) {
   return queryString.parse(resp.data)
 }
 
+export async function getEvents(userName, repoName){
+  console.log(`/repos/${userName}/${repoName}/events`)
+  const { data } =  await github.get(`/repos/${userName}/${repoName}/events`)
+  return data
+}
+
 export async function getRepositories(token) {
   const { data } = await github.get(`/repos`, { headers: getHeaders(token) })
   return data

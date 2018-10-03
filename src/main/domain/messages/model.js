@@ -5,6 +5,7 @@ const MessageSchema = new Schema({
     threadId: String,
     sentAt: Date,
     savedAt: Date,
+    eventId: Number,
     user: {
         githubId: Number,
         username: String,
