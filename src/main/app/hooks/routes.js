@@ -23,7 +23,8 @@ router.post('/', async (req, res) => {
             const commit = commits[i]
             const userName = commit.author.username
             const content = `Um commit foi adicionado no repositório por ${userName}`
-            const resp = await createMessage(content, mainThread._id, null, new Date())
+            const url = commit.url
+            const resp = await createMessage(content, mainThread._id, null, new Date(), 0, url)
             if(!resp){
                 res.status(200).send(resp)
             }
@@ -33,7 +34,9 @@ router.post('/', async (req, res) => {
         const issue = req.body.issue
         const userName = issue.user.login;
         const content = `Um novo issue foi aberto por ${userName}`
-        const resp = await createMessage(content, mainThread._id, null, new Date())
+        const url = issue.html_url
+        const resp = await createMessage(content, mainThread._id, null, new Date(), 0, url)
+         
         if(!resp){
             res.status(200).send(resp)
         }

@@ -10,7 +10,8 @@ const MessageSchema = new Schema({
         githubId: Number,
         username: String,
         name: String
-    }
+    },
+    url: String
 })
 
 export default Mongoose.model('Message', MessageSchema)
