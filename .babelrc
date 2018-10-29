@@ -4,7 +4,8 @@
     "babel-plugin-transform-async-generator-functions",
     "babel-plugin-transform-async-to-generator",
     "babel-plugin-transform-regenerator",
-    "@babel/plugin-transform-regenerator"
+    "@babel/plugin-transform-regenerator",
+    "babel-plugin-transform-es2015-spread"
   ],
   "ignore": [
     "./node_modules/",
