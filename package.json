@@ -35,7 +35,7 @@
     "dotenv": "^6.0.0",
     "elasticsearch": "^15.2.0",
     "express": "^4.15.2",
-    "mongodb": "^3.1.4",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.2.14",
     "query-string": "^6.1.0",
     "regenerator-runtime": "^0.12.1",
